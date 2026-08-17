@@ -1,0 +1,1615 @@
+
+:root {
+    --bg: #E9ECEF;
+    --surface: #FFFFFF;
+    --text: #14181C;
+    --muted: #626C76;
+    --muted-light: #8D959D;
+    --line: #D3D9DF;
+
+    --zhu: #A32B2B;
+    --zhu-light: #C98B84;
+    --indigo: #1F4E79;
+    --indigo-light: #7FA0BE;
+    --brass: #8A6E28;
+
+    --accent: var(--zhu);
+    --accent2: var(--zhu-light);
+
+    --max: 1240px;
+    --radius: 8px;
+    --shadow: 0 8px 24px rgba(20, 24, 28, 0.07);
+
+    --serif: "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif SC", "SimSun", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", Arial, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", "Roboto Mono", Consolas, monospace;
+}
+
+
+/* =========================
+   01. Global
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* =========================
+   02. Header
+========================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(233, 236, 239, 0.96);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+    max-width: var(--max);
+    margin: auto;
+    min-height: 72px;
+
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--text);
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+}
+
+.brand-mark {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 3px;
+
+    background: var(--zhu);
+
+    box-shadow: none;
+}
+
+
+/* Desktop Navigation */
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.desktop-nav a {
+    color: var(--muted);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    padding: 10px 13px;
+
+    border-radius: 4px;
+
+    transition: 0.18s;
+}
+
+.desktop-nav a:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.desktop-nav a.active {
+    color: var(--zhu);
+    background: transparent;
+    font-weight: 650;
+}
+
+
+/* Mobile Menu Button */
+
+.menu-button {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--line);
+
+    color: var(--text);
+    background: var(--surface);
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-button span,
+.menu-button span:before,
+.menu-button span:after {
+    display: block;
+
+    width: 18px;
+    height: 2px;
+
+    background: var(--text);
+
+    border-radius: 2px;
+}
+
+.menu-button span {
+    position: relative;
+}
+
+.menu-button span:before,
+.menu-button span:after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+}
+
+.menu-button span:before {
+    top: -6px;
+}
+
+.menu-button span:after {
+    top: 6px;
+}
+
+
+/* Mobile Navigation */
+
+.mobile-nav {
+    display: none;
+
+    padding: 0 20px 18px;
+
+    background: var(--bg);
+
+    border-top: 1px solid var(--line);
+}
+
+.mobile-nav.open {
+    display: block;
+}
+
+.mobile-nav a {
+    display: block;
+
+    color: var(--muted);
+
+    padding: 12px 8px;
+
+    border-bottom: 1px solid var(--line);
+
+    font-size: 14px;
+}
+
+.mobile-nav a.active {
+    color: var(--zhu);
+    font-weight: 700;
+}
+
+
+/* =========================
+   03. Hero
+========================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    background: var(--bg);
+    color: var(--text);
+
+    border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+    max-width: var(--max);
+    margin: auto;
+
+    padding: 78px 28px 72px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(360px, 0.85fr);
+
+    align-items: center;
+
+    gap: 64px;
+}
+
+.kicker {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+
+    color: var(--zhu);
+
+    margin-bottom: 18px;
+}
+
+.kicker:before {
+    content: "";
+
+    width: 28px;
+    height: 1px;
+
+    background: var(--zhu);
+}
+
+.hero h1 {
+    margin: 0;
+
+    max-width: 760px;
+
+    font-family: var(--serif);
+
+    font-size: clamp(42px, 5vw, 64px);
+
+    line-height: 1.08;
+
+    letter-spacing: 0.015em;
+
+    font-weight: 600;
+}
+
+.hero p {
+    max-width: 700px;
+
+    margin: 24px 0 0;
+
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* Hero Buttons */
+
+.hero-actions {
+    margin-top: 32px;
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 18px;
+
+    border-radius: 3px;
+
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.btn-primary {
+    color: #FFFFFF;
+
+    background: var(--zhu);
+
+    border: 1px solid var(--zhu);
+
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    background: #8F2525;
+    border-color: #8F2525;
+}
+
+.btn-ghost {
+
+    border: 1px solid var(--line);
+
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.btn-ghost:hover {
+    background: var(--surface);
+}
+
+
+/* =========================
+   04. Macro Momentum Card
+========================= */
+
+.dashboard-card {
+    background: var(--surface);
+
+    color: var(--text);
+
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--zhu);
+
+    border-radius: 0;
+
+    padding: 20px;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+.mock-top {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 11px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.mock-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.03em;
+}
+
+.mock-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.mock-dots i {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--line);
+}
+
+
+/* Mock Chart */
+
+.mock-chart {
+    height: 190px;
+
+    border-radius: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent 24%,
+            #EEF1F3 25%,
+            transparent 26%,
+            transparent 49%,
+            #EEF1F3 50%,
+            transparent 51%,
+            transparent 74%,
+            #EEF1F3 75%,
+            transparent 76%
+        ),
+        linear-gradient(
+            to bottom,
+            transparent 24%,
+            #EEF1F3 25%,
+            transparent 26%,
+            transparent 49%,
+            #EEF1F3 50%,
+            transparent 51%,
+            transparent 74%,
+            #EEF1F3 75%,
+            transparent 76%
+        ),
+        #FFFFFF;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.mock-line {
+    position: absolute;
+
+    left: 7%;
+    right: 4%;
+    bottom: 24%;
+
+    height: 92px;
+
+    border-bottom: 3px solid var(--indigo);
+
+    border-radius: 50% 60% 0 0;
+
+    transform: skewY(-8deg) rotate(-2deg);
+}
+
+
+/* Macro Metrics */
+
+.mock-pills {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1px;
+
+    margin-top: 14px;
+
+    background: var(--line);
+
+    border: 1px solid var(--line);
+}
+
+.mock-pill {
+    background: var(--surface);
+
+    border: 0;
+
+    border-radius: 0;
+
+    padding: 12px;
+}
+
+.mock-pill strong {
+    display: block;
+
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.mock-pill span {
+    font-size: 11px;
+    color: var(--muted-light);
+}
+
+
+/* =========================
+   05. Stats
+========================= */
+
+.stats-wrap {
+    max-width: var(--max);
+
+    margin: -22px auto 0;
+
+    position: relative;
+
+    z-index: 3;
+
+    padding: 0 28px;
+}
+
+.stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    background: var(--line);
+
+    border: 1px solid var(--line);
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    gap: 1px;
+
+    overflow: hidden;
+}
+
+.stat {
+    padding: 20px 22px;
+
+    background: var(--surface);
+
+    border-right: 0;
+}
+
+.stat:last-child {
+    border-right: 0;
+}
+
+.stat b {
+    display: block;
+
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+
+    margin-bottom: 2px;
+}
+
+.stat:first-child b {
+    color: var(--zhu);
+}
+
+.stat span {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   06. Sections
+========================= */
+
+.section {
+    max-width: var(--max);
+
+    margin: auto;
+
+    padding: 72px 28px;
+}
+
+.section-head {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: end;
+
+    gap: 32px;
+
+    margin-bottom: 30px;
+
+    padding-bottom: 14px;
+
+    border-bottom: 2px solid var(--text);
+}
+
+.section-head h2 {
+    margin: 0;
+
+    font-family: var(--serif);
+
+    font-size: clamp(30px, 3.4vw, 42px);
+
+    line-height: 1.18;
+
+    letter-spacing: 0.025em;
+
+    font-weight: 600;
+}
+
+.section-head p {
+    margin: 0;
+
+    max-width: 520px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   07. Tab Cards
+========================= */
+
+.tab-grid {
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    gap: 18px;
+}
+
+.tab-card {
+    grid-column: span 4;
+
+    position: relative;
+
+    background: var(--surface);
+
+    border: 1px solid var(--line);
+
+    border-radius: 0;
+
+    padding: 26px;
+
+    min-height: 220px;
+
+    overflow: hidden;
+
+    transition: 0.18s;
+}
+
+.tab-card:nth-child(1),
+.tab-card:nth-child(2) {
+    grid-column: span 6;
+}
+
+.tab-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow);
+
+    border-color: #BBC2C8;
+}
+
+.tab-no {
+    font-family: var(--mono);
+    font-size: 10.5px;
+
+    letter-spacing: 0.12em;
+
+    color: var(--zhu);
+
+    font-weight: 600;
+}
+
+.tab-card h3 {
+    margin: 30px 0 10px;
+
+    font-family: var(--serif);
+
+    font-size: 24px;
+    font-weight: 600;
+
+    letter-spacing: 0.03em;
+}
+
+.tab-card p {
+    margin: 0;
+
+    color: var(--muted);
+
+    max-width: 86%;
+
+    font-size: 13px;
+}
+
+.tab-arrow {
+    position: absolute;
+
+    right: 24px;
+    bottom: 22px;
+
+    width: auto;
+    height: auto;
+
+    border-radius: 0;
+
+    display: block;
+
+    background: transparent;
+
+    color: var(--zhu);
+
+    font-family: var(--mono);
+    font-weight: 600;
+}
+
+.tab-accent {
+    display: none;
+}
+
+
+/* =========================
+   08. Feature Band
+========================= */
+
+.feature-band {
+    background: var(--surface);
+
+    color: var(--text);
+
+    border-top: 2px solid var(--text);
+    border-bottom: 1px solid var(--line);
+}
+
+.feature-inner {
+    max-width: var(--max);
+
+    margin: auto;
+
+    padding: 60px 28px;
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 54px;
+
+    align-items: center;
+}
+
+.feature-copy h2 {
+    margin: 0 0 16px;
+
+    font-family: var(--serif);
+
+    font-size: 36px;
+    font-weight: 600;
+
+    letter-spacing: 0.025em;
+}
+
+.feature-copy p {
+    margin: 0;
+
+    color: var(--muted);
+}
+
+.feature-list {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1px;
+
+    background: var(--line);
+
+    border: 1px solid var(--line);
+}
+
+.feature-item {
+    border: 0;
+
+    background: var(--surface);
+
+    border-radius: 0;
+
+    padding: 18px;
+}
+
+.feature-item strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-family: var(--serif);
+    font-weight: 600;
+}
+
+.feature-item span {
+    color: var(--muted-light);
+
+    font-size: 12px;
+}
+
+/* =========================
+   Page Tabs
+========================= */
+
+.page-tabs {
+    width: 100%;
+
+    background: #FFFFFF;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.page-tabs-inner {
+    max-width: var(--max);
+
+    margin: 0 auto;
+
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+.page-tabs-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.page-tab {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    padding: 17px 22px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+
+    transition: 0.18s ease;
+}
+
+.page-tab:hover {
+    color: var(--text);
+
+    background: #F5F6F7;
+}
+
+
+/* 当前 Tab */
+
+.page-tab.active {
+    color: var(--zhu);
+
+    font-weight: 650;
+
+    background: #FFFFFF;
+}
+
+.page-tab.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 18px;
+    right: 18px;
+    bottom: 0;
+
+    height: 3px;
+
+    background: var(--zhu);
+}
+
+/* =========================
+   09. Page Header
+========================= */
+
+.page-head {
+    background: var(--bg);
+
+    border-bottom: 2px solid var(--text);
+}
+
+.page-head-inner {
+    max-width: var(--max);
+
+    margin: auto;
+
+    padding: 54px 28px 32px;
+}
+
+.page-head .kicker {
+    color: var(--zhu);
+
+    margin-bottom: 12px;
+}
+
+.page-head .kicker:before {
+    background: var(--zhu);
+}
+
+.page-head h1 {
+    margin: 0;
+
+    font-family: var(--serif);
+
+    font-size: clamp(36px, 4vw, 50px);
+
+    line-height: 1.1;
+
+    letter-spacing: 0.03em;
+
+    font-weight: 600;
+}
+
+.page-head p {
+    max-width: 760px;
+
+    margin: 16px 0 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   10. Content Layout
+========================= */
+
+.page-shell {
+    max-width: var(--max);
+
+    margin: auto;
+
+    padding: 48px 28px 70px;
+}
+
+.content-layout {
+    display: grid;
+
+    grid-template-columns: 230px minmax(0, 1fr);
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+.sidebar {
+    position: sticky;
+
+    top: 96px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--line);
+
+    border-radius: 0;
+
+    padding: 12px;
+}
+
+.sidebar a {
+    display: block;
+
+    padding: 10px 11px;
+
+    border-radius: 0;
+
+    font-size: 12px;
+
+    color: var(--muted);
+
+    border-bottom: 1px solid #EEF0F2;
+}
+
+.sidebar a:last-child {
+    border-bottom: 0;
+}
+
+.sidebar a:hover {
+    color: var(--zhu);
+
+    background: #F5F7F8;
+}
+
+.content {
+    background: var(--surface);
+
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--zhu);
+
+    border-radius: 0;
+
+    padding: 30px;
+}
+
+.content section {
+    padding: 4px 0 32px;
+
+    margin-bottom: 30px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.content section:last-child {
+    margin-bottom: 0;
+
+    padding-bottom: 0;
+
+    border-bottom: 0;
+}
+
+.content h2 {
+    margin: 0 0 12px;
+
+    font-family: var(--serif);
+
+    font-size: 24px;
+    font-weight: 600;
+
+    letter-spacing: 0.03em;
+}
+
+.content p {
+    color: var(--muted);
+}
+
+.placeholder {
+    min-height: 260px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 0;
+
+    background: #F5F7F8;
+
+    display: grid;
+
+    place-items: center;
+
+    color: var(--muted-light);
+
+    margin-top: 20px;
+
+    font-family: var(--mono);
+    font-size: 11px;
+}
+
+
+/* =========================
+   11. Footer
+========================= */
+
+.site-footer {
+    background: var(--bg);
+
+    border-top: 2px solid var(--text);
+}
+
+.footer-inner {
+    max-width: var(--max);
+
+    margin: auto;
+
+    padding: 30px 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    color: var(--muted-light);
+
+    font-family: var(--mono);
+    font-size: 10.5px;
+}
+
+
+/* =========================
+   12. Tablet
+========================= */
+
+@media (max-width: 1000px) {
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-button {
+        display: flex;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+
+        gap: 44px;
+
+        padding-top: 64px;
+    }
+
+    .hero-visual {
+        max-width: 620px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-head {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .tab-card,
+    .tab-card:nth-child(1),
+    .tab-card:nth-child(2) {
+        grid-column: span 6;
+    }
+
+    .feature-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================
+   13. Mobile
+========================= */
+
+@media (max-width: 760px) {
+    .data-dashboard-inner {
+    padding: 38px 18px;
+}
+
+
+.data-dashboard-head {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+}
+
+
+.data-switch {
+    width: 100%;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+
+.data-switch::-webkit-scrollbar {
+    display: none;
+}
+
+
+.data-switch-btn {
+    flex: 0 0 auto;
+
+    white-space: nowrap;
+}
+
+
+.data-metric-grid {
+    grid-template-columns:
+        repeat(2, 1fr);
+}
+
+    .header-inner {
+        min-height: 64px;
+
+        padding: 0 18px;
+    }
+
+    .hero-inner {
+        padding: 50px 18px 58px;
+    }
+
+    .hero h1 {
+        font-size: clamp(36px, 11vw, 48px);
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .dashboard-card {
+        transform: none;
+    }
+
+    .mock-chart {
+        height: 150px;
+    }
+
+    .stats-wrap {
+        padding: 0 18px;
+
+        margin-top: -18px;
+    }
+
+    .section {
+        padding: 54px 18px;
+    }
+
+    .tab-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tab-card,
+    .tab-card:nth-child(1),
+    .tab-card:nth-child(2) {
+        grid-column: 1;
+    }
+
+    .feature-inner {
+        padding: 54px 18px;
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+
+    .page-head-inner {
+        padding: 42px 18px 30px;
+    }
+
+    .page-shell {
+        padding: 30px 18px 54px;
+    }
+
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+
+        display: flex;
+
+        overflow-x: auto;
+
+        gap: 0;
+
+        padding: 0;
+    }
+
+    .sidebar a {
+        white-space: nowrap;
+        border-bottom: 0;
+        border-right: 1px solid var(--line);
+    }
+
+    .content {
+        padding: 22px 18px;
+    }
+}
+
+/* =========================
+   Data Dashboard
+========================= */
+
+.data-dashboard {
+    background: #FFFFFF;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+
+.data-dashboard-inner {
+    max-width: var(--max);
+
+    margin: 0 auto;
+
+    padding: 48px 28px;
+}
+
+
+/* Header */
+
+.data-dashboard-head {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 28px;
+
+    padding-bottom: 14px;
+
+    border-bottom: 2px solid var(--text);
+}
+
+
+.data-dashboard-head .kicker {
+    margin-bottom: 5px;
+}
+
+
+.data-dashboard-head h2 {
+    margin: 0;
+
+    font-family: var(--serif);
+
+    font-size: 30px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   Tab
+========================= */
+
+.data-switch {
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+}
+
+
+.data-switch-btn {
+    appearance: none;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    padding: 10px 16px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    border-bottom: 2px solid transparent;
+
+    transition: 0.18s ease;
+}
+
+
+.data-switch-btn:hover {
+    color: var(--zhu);
+}
+
+
+.data-switch-btn.active {
+    color: var(--zhu);
+
+    font-weight: 650;
+
+    border-bottom-color: var(--zhu);
+}
+
+
+/* =========================
+   Panel
+========================= */
+
+.data-panel {
+    display: none;
+}
+
+
+.data-panel.active {
+    display: block;
+}
+
+
+/* =========================
+   Metric Grid
+========================= */
+
+.data-metric-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+
+/* Metric */
+
+.data-metric {
+    min-height: 150px;
+
+    padding: 20px 22px;
+
+    background: #FFFFFF;
+
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+
+.data-metric-title {
+    min-height: 38px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.data-metric-value {
+    margin-top: 10px;
+
+    margin-bottom: 8px;
+
+    font-family: var(--mono);
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    line-height: 1.1;
+
+    color: var(--indigo);
+}
+
+
+/* 负值可以用朱红强调 */
+
+.data-metric-value.negative {
+    color: var(--zhu);
+}
+
+
+.data-metric-note {
+    color: var(--muted-light);
+
+    font-size: 11px;
+
+    line-height: 1.55;
+}
+
+
+/* More Link */
+
+.data-more {
+    margin-top: 16px;
+
+    text-align: right;
+}
+
+
+.data-more a {
+    color: var(--zhu);
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.data-more a:hover {
+    text-decoration: underline;
+}
+/* =========================
+   14. Small Mobile
+========================= */
+
+@media (max-width: 520px) {
+    .data-metric-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    
+    .data-metric {
+        min-height: auto;
+    }
+    
+    
+    .data-metric-value {
+        font-size: 26px;
+    }
+
+    .brand {
+        font-size: 13px;
+    }
+
+    .brand-mark {
+        width: 26px;
+        height: 26px;
+    }
+
+    .hero-inner {
+        padding-top: 40px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .mock-pills {
+        grid-template-columns: 1fr;
+    }
+
+    .section-head h2,
+    .feature-copy h2 {
+        font-size: 29px;
+    }
+}
+
+
+/* =========================
+   15. Data Dashboard Responsive Override
+   说明：放在文件末尾，确保覆盖前面的桌面 4 列规则。
+========================= */
+
+@media (max-width: 760px) {
+    .data-dashboard-inner {
+        padding: 38px 18px;
+    }
+
+    .data-dashboard-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .data-switch {
+        width: 100%;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .data-switch::-webkit-scrollbar {
+        display: none;
+    }
+
+    .data-switch-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .data-metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .data-metric-grid {
+        grid-template-columns: 1fr;
+    }
+}

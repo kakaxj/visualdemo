@@ -1,0 +1,203 @@
+:root{
+  --paper:#E9ECEF; --panel:#FFFFFF; --ink:#14181C; --ink2:#626C76; --ink3:#8D959D;
+  --rule:#D3D9DF; --zhu:#A32B2B; --zhu-l:#C98B84; --indigo:#1F4E79; --indigo-l:#7FA0BE; --brass:#8A6E28;
+  --serif:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  --mono:"SF Mono","JetBrains Mono","Roboto Mono",Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+     font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 64px}
+
+header{padding:40px 0 22px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-size:11px;letter-spacing:.22em;color:var(--zhu);font-weight:600;margin-bottom:12px}
+h1{font-family:var(--serif);font-size:38px;font-weight:600;letter-spacing:.06em;margin:0 0 6px}
+.sub{color:var(--ink2);font-size:13px}
+.sub b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+
+.readout{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+         border:1px solid var(--rule);border-top:none;margin-bottom:34px}
+
+/* 页首本期总结：由 Excel 最新一期数据自动生成 */
+.summary-panel{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--zhu);
+               padding:17px 20px 18px;margin:-14px 0 34px}
+.summary-head{display:flex;align-items:baseline;gap:10px;margin-bottom:7px}
+.summary-kicker{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--zhu);letter-spacing:.10em}
+.summary-title{font-family:var(--serif);font-size:16px;font-weight:600;letter-spacing:.04em}
+.summary-text{font-size:13.5px;color:var(--ink2);line-height:1.85}
+.summary-text strong{color:var(--ink);font-weight:600}
+.summary-text .key{color:var(--zhu);font-family:var(--mono);font-weight:600}
+.rd{background:var(--panel);padding:16px 18px}
+.rd .k{font-size:11px;color:var(--ink2);letter-spacing:.04em;margin-bottom:7px;line-height:1.45;min-height:32px}
+.rd .v{font-family:var(--mono);font-size:25px;font-weight:500;letter-spacing:-.02em;line-height:1}
+.rd .u{font-size:12px;color:var(--ink3);margin-left:3px;font-family:var(--sans)}
+.rd .d{font-size:11px;color:var(--ink3);margin-top:7px;font-family:var(--mono)}
+.neg{color:var(--indigo)}
+
+.sec{display:flex;align-items:baseline;gap:14px;margin:38px 0 16px;
+     border-bottom:1px solid var(--ink);padding-bottom:9px}
+.sec .num{font-family:var(--mono);font-size:11px;color:var(--zhu);font-weight:600;letter-spacing:.1em}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.05em;margin:0}
+.sec .ref{margin-left:auto;font-size:11px;color:var(--ink3);font-family:var(--mono)}
+
+.panel{background:var(--panel);border:1px solid var(--rule);padding:20px 20px 14px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.phead{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+       border-bottom:1px solid var(--rule);padding-bottom:11px;margin-bottom:6px}
+.ptitle{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:.03em}
+.ptag{font-family:var(--mono);font-size:10.5px;color:var(--ink3);letter-spacing:.03em;white-space:nowrap}
+.pnote{font-size:12px;color:var(--ink3);margin:8px 2px 2px;line-height:1.6}
+.chart{width:100%;height:290px}
+.hero{border-top:3px solid var(--zhu)}
+.hero .chart{height:350px}
+
+.method{border-top:2px solid var(--ink);margin-top:38px;padding-top:22px}
+.method h2{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:.05em;margin:0 0 4px}
+.method h3{font-family:var(--serif);font-size:14.5px;font-weight:600;letter-spacing:.05em;
+           margin:26px 0 12px;color:var(--ink);padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.def{display:grid;grid-template-columns:70px 1fr;gap:14px;margin-bottom:16px;align-items:start}
+.def .tag{font-family:var(--mono);font-size:10.5px;color:var(--zhu);font-weight:600;
+          padding-top:3px;letter-spacing:.04em}
+.def .body .nm{font-size:13px;font-weight:600;margin-bottom:5px}
+.def .body .eq{font-family:var(--mono);font-size:12px;color:var(--ink2);background:#F5F7F8;
+               border-left:2px solid var(--rule);padding:8px 12px;line-height:1.9;
+               white-space:pre-wrap;overflow-x:auto}
+.def .body .cm{font-size:12px;color:var(--ink3);margin-top:6px;line-height:1.6}
+.note{display:flex;gap:12px;font-size:12.5px;color:var(--ink2);margin-bottom:10px;line-height:1.68}
+.note .n{font-family:var(--mono);font-size:10.5px;color:var(--zhu);font-weight:600;flex:0 0 20px;padding-top:2px}
+.colophon{margin-top:24px;padding-top:14px;border-top:1px solid var(--rule);
+          font-family:var(--mono);font-size:10.5px;color:var(--ink3);letter-spacing:.03em;line-height:1.9}
+
+.footer-meta{margin-top:34px;border-top:2px solid var(--ink);padding-top:20px}
+.footer-meta h2{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:.05em;margin:0 0 14px}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.team-card{background:var(--panel);border:1px solid var(--rule);padding:16px 16px 14px;min-height:110px}
+.team-card .slot{font-family:var(--mono);font-size:9.5px;color:var(--ink3);letter-spacing:.10em;margin-bottom:14px}
+.team-field{display:grid;grid-template-columns:48px 1fr;gap:8px;align-items:end;margin-top:12px}
+.team-field .lab{font-family:var(--mono);font-size:9.5px;color:var(--ink3);letter-spacing:.08em}
+.team-field .blank{height:18px;border-bottom:1px solid var(--rule)}
+.disclaimer-box{background:var(--panel);border:1px solid var(--rule);padding:16px 18px 18px;margin-top:8px}
+.disclaimer-box .dtitle{font-family:var(--serif);font-size:16px;font-weight:600;letter-spacing:.04em;margin-bottom:12px}
+.disclaimer-blank{min-height:105px;border-top:1px solid var(--rule)}
+
+/* 财政执行摘要卡与页首摘要卡共用同一视觉体系 */
+.exec-readout{border-top:1px solid var(--rule);margin:0 0 20px}
+
+/* 平板：双栏图改为单栏，摘要卡保持 2×2 */
+@media(max-width:1024px){
+  .wrap{max-width:100%;padding:0 18px 56px}
+  .grid2{grid-template-columns:1fr}
+  .readout{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .chart{height:320px}
+  .hero .chart{height:360px}
+  .sec .ref{display:none}
+}
+
+/* 手机：标题、图例、图表高度和留白均按窄屏重新排布 */
+@media(max-width:600px){
+  body{font-size:13px;line-height:1.58}
+  .wrap{padding:0 12px 44px}
+  header{padding:26px 0 16px}
+  .eyebrow{font-size:10px;margin-bottom:8px}
+  h1{font-size:27px;letter-spacing:.035em;margin-bottom:7px}
+  .sub{font-size:11.5px;line-height:1.55}
+
+  .readout{grid-template-columns:1fr 1fr;margin-bottom:24px}
+  .summary-panel{margin:-8px 0 26px;padding:14px 13px 15px}
+  .summary-head{margin-bottom:5px}
+  .summary-title{font-size:15px}
+  .summary-text{font-size:12px;line-height:1.75}
+  .exec-readout{margin-bottom:16px}
+  .rd{padding:12px 11px 11px;min-width:0}
+  .rd .k{font-size:10px;line-height:1.38;min-height:29px;margin-bottom:6px}
+  .rd .v{font-size:20px;white-space:nowrap}
+  .rd .u{font-size:10.5px}
+  .rd .d{font-size:9.8px;line-height:1.45;margin-top:6px;white-space:normal}
+
+  .sec{margin:28px 0 12px;padding-bottom:7px;gap:9px}
+  .sec .num{font-size:10px}
+  .sec h2{font-size:20px}
+
+  .panel{padding:14px 12px 10px;margin-bottom:14px}
+  .phead{flex-direction:column;align-items:flex-start;gap:3px;padding-bottom:8px;margin-bottom:3px}
+  .ptitle{font-size:16px;line-height:1.4}
+  .ptag{font-size:9.8px;line-height:1.45;white-space:normal}
+  .pnote{font-size:11.2px;line-height:1.55;margin-top:7px}
+  .chart{height:315px}
+  .hero .chart{height:335px}
+
+  .method{margin-top:30px;padding-top:18px}
+  .method h2{font-size:18px}
+  .method h3{font-size:14px;margin-top:22px}
+  .def{grid-template-columns:1fr;gap:5px}
+  .def .body .eq{font-size:10.5px;padding:7px 9px}
+  .note{font-size:11.5px;gap:9px}
+  .colophon{font-size:9.7px}
+
+  .footer-meta{margin-top:30px}
+  .footer-meta h2{font-size:18px}
+  .team-grid{grid-template-columns:1fr}
+  .team-card{min-height:96px;padding:13px}
+  .disclaimer-box{padding:14px}
+}
+
+@media(max-width:360px){
+  .readout{grid-template-columns:1fr}
+}
+.fade{opacity:0;transform:translateY(8px);animation:in .55s ease forwards}
+@keyframes in{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}}
+
+html{scroll-behavior:smooth}
+button,input{font:inherit}
+
+/* 与高频页保持一致的顶部导航与数据读取控件 */
+.page-tabs{display:flex;align-items:stretch;gap:0;margin:18px 0 0;border:1px solid var(--rule);background:var(--panel);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.page-tabs::-webkit-scrollbar{display:none}
+.page-tab{position:relative;display:flex;align-items:center;justify-content:center;min-width:116px;padding:11px 18px 10px;border-right:1px solid var(--rule);color:var(--ink2);font-size:12px;font-weight:500;letter-spacing:.025em;white-space:nowrap;text-decoration:none;transition:background .16s ease,color .16s ease}
+.page-tab:last-child{border-right:0}.page-tab:hover{background:#F5F7F8;color:var(--ink)}
+.page-tab.active{color:var(--ink);font-weight:600;background:#FBFBFA}.page-tab.active:before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:3px;background:var(--zhu)}
+.page-tab.home{color:var(--zhu)}.page-tab .tab-en{margin-left:7px;font-family:var(--mono);font-size:9px;color:var(--ink3);letter-spacing:.04em}
+.header-row{display:flex;gap:24px;align-items:flex-end;justify-content:space-between}.header-copy{min-width:0}
+.header-actions{display:flex;align-items:center;gap:8px;flex:0 0 auto;padding-bottom:2px}
+.data-badge{font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--ink2);border:1px solid var(--rule);background:var(--panel);padding:7px 9px;white-space:nowrap}
+.refresh-btn,.file-btn{border:1px solid var(--rule);background:var(--panel);color:var(--ink2);padding:7px 10px;cursor:pointer;font-size:11px;transition:.16s ease}.refresh-btn:hover,.file-btn:hover{border-color:var(--ink3);color:var(--ink)}.refresh-btn:active,.file-btn:active{transform:translateY(1px)}
+.status-box{display:none;margin:14px 0 0;border:1px solid var(--rule);background:var(--panel);padding:11px 13px;font-size:12px;color:var(--ink2)}
+.status-box.show{display:flex;align-items:center;gap:10px;justify-content:space-between}.status-box.error{border-left:3px solid var(--zhu)}.status-box.ok{border-left:3px solid var(--indigo)}
+.status-main{min-width:0}.status-title{font-weight:600;color:var(--ink);margin-bottom:2px}#fileInput{display:none}
+.loading-mask{position:fixed;inset:0;background:rgba(233,236,239,.90);display:flex;align-items:center;justify-content:center;z-index:99;transition:opacity .2s ease}.loading-mask.hidden{opacity:0;pointer-events:none}
+.loader-box{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--zhu);padding:22px 26px;text-align:center;min-width:270px}.loader-title{font-family:var(--serif);font-size:17px;font-weight:600;margin-bottom:5px}.loader-sub{font-family:var(--mono);font-size:10.5px;color:var(--ink3)}
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:14px 0 24px}.method-card{background:var(--panel);border:1px solid var(--rule);padding:15px 17px}.method-card .label{font-family:var(--mono);font-size:10px;color:var(--zhu);font-weight:600;letter-spacing:.08em;margin-bottom:7px}.method-card .body{font-size:12px;color:var(--ink2);line-height:1.75}.code{font-family:var(--mono);color:var(--ink);background:#F5F7F8;padding:1px 4px}
+@media(max-width:700px){.header-row{align-items:flex-start;flex-direction:column;gap:12px}.header-actions{width:100%;justify-content:flex-start;padding-bottom:0;flex-wrap:wrap}.data-badge{white-space:normal}}
+@media(max-width:600px){.page-tabs{margin-top:12px}.page-tab{min-width:100px;padding:10px 13px 9px;font-size:11px}.page-tab .tab-en{display:none}.method-grid{grid-template-columns:1fr}}
+
+/* ── Footer：与 index.html 保持一致 ───────────────── */
+.site-footer{
+  background:var(--paper);
+  border-top:2px solid var(--ink);
+}
+.footer-inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:30px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  color:var(--ink3);
+  font-family:var(--mono);
+  font-size:10.5px;
+  line-height:1.5;
+}
+.footer-inner a{
+  color:var(--ink3);
+  text-decoration:none;
+  transition:color .16s ease;
+}
+.footer-inner a:hover{color:var(--zhu)}
+@media(max-width:600px){
+  .footer-inner{padding:22px 12px;font-size:9.8px}
+}
