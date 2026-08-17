@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>Research Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="js/config.js"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="index.html">
+            <span class="brand-mark"></span>
+            <span>RESEARCH DASHBOARD</span>
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="index.html" class="active">首页</a>
+            <a href="tab1.html" class="">高频景气</a>
+            <a href="tab2.html" class="">财政观测</a>
+            <a href="tab3.html" class="">外贸跟踪</a>
+            <a href="tab4.html" class="">联储动态</a>
+            <a href="tab5.html" class="">专题研究</a>
+        </nav>
+
+        <button
+            class="menu-button"
+            aria-label="打开菜单"
+            aria-expanded="false"
+        >
+            <span></span>
+        </button>
+    </div>
+
+    <nav class="mobile-nav">
+        <a href="index.html" class="active">首页</a>
+        <a href="tab1.html" class="">高频景气</a>
+        <a href="tab2.html" class="">财政观测</a>
+        <a href="tab3.html" class="">外贸跟踪</a>
+        <a href="tab4.html" class="">联储动态</a>
+        <a href="tab5.html" class="">专题研究</a>
+    </nav>
+</header>
+
+
+<section class="hero">
+    <div class="hero-inner">
+
+        <div>
+            <div class="kicker">
+                Macro Research · Data Visualization
+            </div>
+
+            <h1>
+                宏观研究<br>
+            </h1>
+            <p>
+                xxxx
+            </p>
+        </div>
+    </div>
+</section>
+<!-- =========================
+     Data Dashboard
+========================= -->
+
+<section class="data-dashboard">
+
+    <div class="data-dashboard-inner">
+
+        <!-- 标题 -->
+        <div class="data-dashboard-head">
+
+            <div>
+                <div class="kicker">
+                    Data Monitor
+                </div>
+
+                <h2>数据</h2>
+            </div>
+
+            <!-- Tab -->
+            <div class="data-switch">
+
+                <button
+                    class="data-switch-btn active"
+                    data-target="high-frequency"
+                >
+                    高频景气
+                </button>
+
+                <button
+                    class="data-switch-btn"
+                    data-target="fiscal"
+                >
+                    财政观测
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             高频景气
+        ====================== -->
+
+        <div
+            class="data-panel active"
+            id="high-frequency"
+        >
+
+            <div class="data-metric-grid">
+
+                <div class="data-metric">
+
+                    <div class="data-metric-title">
+                        综合景气指数
+                    </div>
+
+                    <div class="data-metric-value" id="ichi-composite">--</div>
+                    <div class="data-metric-note" id="ichi-composite-note">正在读取最新数据</div>
+
+                </div>
+
+
+                <div class="data-metric">
+
+                    <div class="data-metric-title">
+                        消费景气
+                    </div>
+
+                    <div class="data-metric-value" id="ichi-consumption">--</div>
+                    <div class="data-metric-note" id="ichi-consumption-note">正在读取最新数据</div>
+
+                </div>
+
+
+                <div class="data-metric">
+
+                    <div class="data-metric-title">
+                        投资景气
+                    </div>
+
+                    <div class="data-metric-value" id="ichi-investment">--</div>
+                    <div class="data-metric-note" id="ichi-investment-note">正在读取最新数据</div>
+
+                </div>
+
+
+                <div class="data-metric">
+
+                    <div class="data-metric-title">
+                        生产景气
+                    </div>
+
+                    <div class="data-metric-value" id="ichi-production">--</div>
+                    <div class="data-metric-note" id="ichi-production-note">正在读取最新数据</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-more">
+                <a href="tab1.html">
+                    查看高频景气完整数据 →
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             财政政策观测
+        ====================== -->
+
+        <div
+            class="data-panel"
+            id="fiscal"
+        >
+
+            <div class="data-metric-grid">
+
+                <div class="data-metric">
+
+                    <div class="data-metric-title">
+                        预算口径脉冲 · 2026年安排
+                    </div>
+
+                    <div class="data-metric-value" id="fiscal-budget-pulse">--</div>
+                    <div class="data-metric-note" id="fiscal-budget-note">正在读取最新数据</div>
+
+                </div>
+
+
+                <div class="data-metric">
+
+                    <div class="data-metric-title">
+                        收支口径脉冲 · 12个月滚动
+                    </div>
+
+                    <div class="data-metric-value" id="fiscal-balance-pulse">--</div>
+                    <div class="data-metric-note" id="fiscal-balance-note">正在读取最新数据</div>
+
+                </div>
+
+
+                <div class="data-metric">
+
+                    <div class="data-metric-title">
+                        新增债务口径脉冲 · 12个月滚动
+                    </div>
+
+                    <div class="data-metric-value" id="fiscal-debt-pulse">--</div>
+                    <div class="data-metric-note" id="fiscal-debt-note">正在读取最新数据</div>
+
+                </div>
+
+
+                <div class="data-metric">
+
+                    <div class="data-metric-title">
+                        收支口径缺口率 · 12个月滚动
+                    </div>
+
+                    <div class="data-metric-value" id="fiscal-gap-ratio">--</div>
+                    <div class="data-metric-note" id="fiscal-gap-note">正在读取最新数据</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-more">
+                <a href="tab2.html">
+                    查看财政政策观测完整数据 →
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<section
+    class="section"
+    id="sections"
+>
+    <div class="section-head">
+
+        <div>
+            <div
+                class="kicker"
+                style="color:#2457d6;margin-bottom:10px"
+            >
+                Research Sections
+            </div>
+
+            <h2>
+                研究框架
+            </h2>
+        </div>
+    </div>
+
+
+    <div class="tab-grid">
+
+        <a
+            class="tab-card"
+            href="tab1.html"
+        >
+            <span class="tab-accent"></span>
+
+            <div class="tab-no">
+                SECTION 01
+            </div>
+
+            <h3>高频景气</h3>
+
+            <p>
+                核心增长、景气指标与总体判断集中展示。
+            </p>
+
+            <span class="tab-arrow">→</span>
+        </a>
+
+
+        <a
+            class="tab-card"
+            href="tab2.html"
+        >
+            <span class="tab-accent"></span>
+
+            <div class="tab-no">
+                SECTION 02
+            </div>
+
+            <h3>财政观测</h3>
+
+            <p>
+                政策。
+            </p>
+
+            <span class="tab-arrow">→</span>
+        </a>
+
+
+        <a
+            class="tab-card"
+            href="tab3.html"
+        >
+            <span class="tab-accent"></span>
+
+            <div class="tab-no">
+                SECTION 03
+            </div>
+
+            <h3>外贸跟踪</h3>
+
+            <p>
+               TRACE框架
+            </p>
+
+            <span class="tab-arrow">→</span>
+        </a>
+
+
+        <a
+            class="tab-card"
+            href="tab4.html"
+        >
+            <span class="tab-accent"></span>
+
+            <div class="tab-no">
+                SECTION 04
+            </div>
+
+            <h3>联储动态</h3>
+
+            <p>
+                FOMC
+            </p>
+
+            <span class="tab-arrow">→</span>
+        </a>
+
+
+        <a
+            class="tab-card"
+            href="tab5.html"
+        >
+            <span class="tab-accent"></span>
+
+            <div class="tab-no">
+                SECTION 05
+            </div>
+
+            <h3>专题研究</h3>
+
+            <p>
+                专题文章、方法说明及深度研究内容。
+            </p>
+
+            <span class="tab-arrow">→</span>
+        </a>
+
+    </div>
+</section>
+
+
+<section class="feature-band">
+    <div class="feature-inner">
+
+        <div class="feature-copy">
+
+            <div class="kicker">
+                Built for research
+            </div>
+
+            <h2>
+                xxxx
+            </h2>
+
+            <p>
+                xxxx
+            </p>
+
+        </div>
+
+
+        <div class="feature-list">
+
+            <div class="feature-item">
+                <strong>xxxx</strong>
+                <span>
+                    xxxx
+                </span>
+            </div>
+
+
+            <div class="feature-item">
+                <strong>xxxx</strong>
+                <span>
+                    xxxx
+                </span>
+            </div>
+
+
+            <div class="feature-item">
+                <strong>xxxx</strong>
+                <span>
+                    xxxx
+                </span>
+            </div>
+
+
+            <div class="feature-item">
+                <strong>xxxx</strong>
+                <span>
+                    xxxx
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>© 2026 JX</span>
+        <a href="disclaimer.html" class=""> Disclaimer</a>
+    </div>
+</footer>
+
+
+<script src="js/index.js"></script>
+
+</body>
+</html>

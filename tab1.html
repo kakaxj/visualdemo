@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ICHI 高频经济景气指数</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<link rel="stylesheet" href="css/tab1.css">
+</head>
+<body>
+<div id="loadingMask" class="loading-mask">
+  <div class="loader-box">
+    <div class="loader-title">正在读取 ICHI 数据</div>
+    <div class="loader-sub">ichi data.xlsx</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!--
+    顶部页面导航：
+    只需要修改下面各 href，即可对应你的实际 HTML 文件名。
+    当前页保持 class="page-tab active"。
+  -->
+  <nav class="page-tabs" aria-label="页面导航">
+    <a class="page-tab home" href="index.html">首页 <span class="tab-en">HOME</span></a>
+    <a class="page-tab active" href="tab1.html" aria-current="page">高频景气 <span class="tab-en">ICHI</span></a>
+    <a class="page-tab" href="tab2.html">财政观测<span class="tab-en">FISCAL</span></a>
+    <a class="page-tab" href="tab3.html">外贸跟踪<span class="tab-en">TRADE</span></a>
+    <a class="page-tab" href="tab4.html">联储动态<span class="tab-en">FED</span></a>
+    <a class="page-tab" href="tab5.html">其他页面 <span class="tab-en">MORE</span></a>
+  </nav>
+
+  <header>
+    <div class="header-row">
+      <div class="header-copy">
+        <div class="eyebrow">XXXX · 宏观研究</div>
+        <h1>ICHI 高频经济景气指数</h1>
+        <div class="sub">数据截止 <b id="asof">—</b></div>
+      </div>
+      <div class="header-actions">
+        <button class="refresh-btn" id="refreshBtn" type="button">刷新数据</button>
+      </div>
+    </div>
+    <div class="status-box" id="statusBox">
+      <div class="status-main">
+        <div class="status-title" id="statusTitle"></div>
+        <div id="statusText"></div>
+      </div>
+      <label class="file-btn" id="fileLabel" for="fileInput">选择 Excel</label>
+      <input id="fileInput" type="file" accept=".xlsx,.xls">
+    </div>
+  </header>
+
+  <div class="readout" id="readout"></div>
+
+  <div class="sec">
+    <div class="num">一</div>
+    <h2>本周结构</h2>
+    <div class="ref">最新值 − 100 · 指数点</div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel fade">
+      <div class="phead">
+        <div class="phead-left">
+          <div class="ptitle">各分项相对景气线的位置</div>
+          <div class="ptag">正值高于 100 · 负值低于 100</div>
+        </div>
+      </div>
+      <div id="structureChart" class="chart chart-structure"></div>
+    </div>
+
+    <div class="panel reading-panel fade" style="animation-delay:.08s">
+      <div class="reading-kicker">WEEKLY READOUT</div>
+      <p class="reading-text" id="readingText">正在生成本周观察……</p>
+      <div class="reading-details" id="readingDetails"></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="num">二</div>
+    <h2>综合景气</h2>
+    <div class="ref">周度指数 · 100 为景气基准</div>
+  </div>
+
+  <div class="panel hero fade">
+    <div class="phead">
+      <div class="phead-left">
+        <div class="ptitle">ICHI 综合景气指数</div>
+        <div class="ptag">周度值 + 4周移动平均 · 虚线为 100 景气线</div>
+      </div>
+      <div class="range-group" aria-label="显示区间">
+        <button class="range-btn" data-weeks="26" type="button">26W</button>
+        <button class="range-btn active" data-weeks="52" type="button">52W</button>
+        <button class="range-btn" data-weeks="all" type="button">全部</button>
+      </div>
+    </div>
+    <div id="mainChart" class="chart"></div>
+    <div class="pnote">默认展示最近 52 周，以突出边际变化；“全部”用于查看长周期历史。鼠标悬停可查看当周指数及 4 周均值。</div>
+  </div>
+
+  <div class="sec">
+    <div class="num">三</div>
+    <h2>分项动能</h2>
+    <div class="ref">最近 13 周 · 同一景气基准</div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel fade" style="animation-delay:.05s">
+      <div class="phead">
+        <div class="phead-left">
+          <div class="component-head"><div class="ptitle">消费景气指数</div><div class="component-value" id="vConsumption">—</div></div>
+          <div class="ptag">最近 13 周</div>
+        </div>
+        <div class="component-meta" id="mConsumption">—</div>
+      </div>
+      <div id="consumptionChart" class="chart chart-mini"></div>
+    </div>
+
+    <div class="panel fade" style="animation-delay:.10s">
+      <div class="phead">
+        <div class="phead-left">
+          <div class="component-head"><div class="ptitle">投资景气指数</div><div class="component-value" id="vInvestment">—</div></div>
+          <div class="ptag">最近 13 周</div>
+        </div>
+        <div class="component-meta" id="mInvestment">—</div>
+      </div>
+      <div id="investmentChart" class="chart chart-mini"></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel fade" style="animation-delay:.15s">
+      <div class="phead">
+        <div class="phead-left">
+          <div class="component-head"><div class="ptitle">出口景气指数</div><div class="component-value" id="vExport">—</div></div>
+          <div class="ptag">最近 13 周</div>
+        </div>
+        <div class="component-meta" id="mExport">—</div>
+      </div>
+      <div id="exportChart" class="chart chart-mini"></div>
+    </div>
+
+    <div class="panel fade" style="animation-delay:.20s">
+      <div class="phead">
+        <div class="phead-left">
+          <div class="component-head"><div class="ptitle">生产景气指数</div><div class="component-value" id="vProduction">—</div></div>
+          <div class="ptag">最近 13 周</div>
+        </div>
+        <div class="component-meta" id="mProduction">—</div>
+      </div>
+      <div id="productionChart" class="chart chart-mini"></div>
+    </div>
+  </div>
+
+  <div class="method">
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 JX</span>
+    <a href="disclaimer.html">Disclaimer</a>
+  </div>
+</footer>
+<script src="js/config.js"></script>
+<script src="js/tab1.js"></script>

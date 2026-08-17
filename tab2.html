@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中国财政政策观测</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<link rel="stylesheet" href="css/tab2.css">
+</head>
+<body>
+<div id="loadingMask" class="loading-mask">
+  <div class="loader-box">
+    <div class="loader-title">正在读取财政数据</div>
+    <div class="loader-sub">fiscal data.xlsx</div>
+  </div>
+</div>
+
+<div class="wrap">
+<nav class="page-tabs" aria-label="页面导航">
+    <a class="page-tab home" href="index.html">首页 <span class="tab-en">HOME</span></a>
+    <a class="page-tab" href="tab1.html">高频景气 <span class="tab-en">ICHI</span></a>
+    <a class="page-tab active" href="tab2.html" aria-current="page">财政观测<span class="tab-en">FISCAL</span></a>
+    <a class="page-tab" href="tab3.html">外贸跟踪<span class="tab-en">TRADE</span></a>
+    <a class="page-tab" href="tab4.html">联储动态<span class="tab-en">FED</span></a>
+    <a class="page-tab" href="tab5.html">其他页面 <span class="tab-en">MORE</span></a>
+</nav>
+
+<header>
+  <div class="header-row">
+    <div class="header-copy">
+      <div class="eyebrow">XXXX · 宏观研究</div>
+      <h1>中国财政政策观测</h1>
+      <div class="sub">数据截止 <b id="asof">—</b></div>
+    </div>
+    <div class="header-actions">
+      <button class="refresh-btn" id="refreshBtn" type="button">刷新数据</button>
+    </div>
+  </div>
+  <div class="status-box" id="statusBox">
+    <div class="status-main">
+      <div class="status-title" id="statusTitle"></div>
+      <div id="statusText"></div>
+    </div>
+    <label class="file-btn" id="fileLabel" for="fileInput">选择 Excel</label>
+    <input id="fileInput" type="file" accept=".xlsx,.xls">
+  </div>
+</header>
+
+<div class="readout" id="readout"></div>
+
+<div class="summary-panel fade" id="summaryPanel">
+  <div class="summary-head">
+    <div class="summary-kicker">SUMMARY</div>
+    <div class="summary-title">本期总结</div>
+  </div>
+  <div class="summary-text" id="summaryText">Excel 数据载入后自动生成本期财政观察。</div>
+</div>
+
+<div class="sec"><div class="num">一</div><h2>财政脉冲</h2><div class="ref">定义见文末 D1–D7</div></div>
+
+<div class="panel hero fade">
+  <div class="phead">
+    <div class="ptitle">预算口径脉冲</div>
+    <div class="ptag">年度 · 柱为脉冲(百分点)，线为广义财政安排占GDP比重(%)</div>
+  </div>
+  <div id="c_bud" class="chart"></div>
+</div>
+
+<div class="grid2">
+  <div class="panel fade" style="animation-delay:.06s">
+    <div class="phead"><div class="ptitle">收支口径脉冲</div><div class="ptag">12个月滚动 · 百分点</div></div>
+    <div id="c_dec" class="chart"></div>
+    <div class="pnote">分子效应是财政收支缺口本身变化的影响，分母效应是名义GDP变化的影响。例如，脉冲+1pct说明过去12个月的财政收支缺口占GDP比重，比一年前扩大了1个百分点，财政对总需求的支持力度在增强。</div>
+  </div>
+  <div class="panel fade" style="animation-delay:.12s">
+    <div class="phead"><div class="ptitle">财政收支缺口与新增债务融资</div><div class="ptag">12个月滚动 · 占GDP %</div></div>
+    <div id="c_wedge" class="chart"></div>
+    <div class="pnote">收支缺口反映财政执行形成的资金需求；新增债务口径在政府债券净融资基础上剔除地方净再融资的近似影响，更接近新增财政融资。两者的相对变化可用于观察新增债务融资与财政支出落地的匹配程度：新增债务融资领先于收支缺口时，可能意味着融资先行、资金尚待支出；收支缺口随后扩大，则表明债券资金正在向实际财政支出转化。</div>
+  </div>
+</div>
+
+<div class="sec"><div class="num">二</div><h2>财政执行</h2><div class="ref">数据说明见文末</div></div>
+
+<div class="readout exec-readout" id="exec_readout"></div>
+
+<div class="grid2">
+  <div class="panel fade">
+    <div class="phead"><div class="ptitle">一般公共预算收支缺口的年内路径</div><div class="ptag">支出累计 − 收入累计 · 万亿元</div></div>
+    <div id="c_pub_gap_path" class="chart"></div>
+    <div class="pnote">比较2022年以来一般公共预算累计收支缺口的年内演进。缺口扩大表示支出相对收入更快释放，缺口收窄则表示收入改善或支出节奏相对偏慢。</div>
+  </div>
+  <div class="panel fade" style="animation-delay:.06s">
+    <div class="phead"><div class="ptitle">一般公共预算收支增速差</div><div class="ptag">支出累计同比 − 收入累计同比 · 百分点</div></div>
+    <div id="c_pub_growth_gap" class="chart"></div>
+    <div class="pnote">正值表示支出增速快于收入，财政执行的扩张倾向增强；负值表示收入增速快于支出。该指标用于观察收支缺口变化的边际方向。</div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="panel fade" style="animation-delay:.12s">
+    <div class="phead"><div class="ptitle">政府性基金与土地出让收入</div><div class="ptag">累计值同比 · %</div></div>
+    <div id="c_fund" class="chart"></div>
+  </div>
+  <div class="panel fade" style="animation-delay:.18s">
+    <div class="phead"><div class="ptitle">财政性存款月度变动</div><div class="ptag">当月增减 · 亿元</div></div>
+    <div id="c_dep" class="chart"></div>
+    <div class="pnote">余额上升对应财政资金自银行体系回笼，下降对应财政投放。</div>
+  </div>
+</div>
+
+<div class="panel fade" style="animation-delay:.24s">
+  <div class="phead"><div class="ptitle">地方政府债券发行与净融资</div><div class="ptag">当月 · 亿元</div></div>
+  <div id="c_lgb" class="chart"></div>
+  <div class="pnote">柱形拆分地方债发行构成：新增专项债和新增一般债对应新增债券融资，再融资债主要用于债务滚续；三者合计为当月地方债发行。净融资为当月发行额扣除到期偿还本金后的净增量。</div>
+</div>
+
+<div class="grid2">
+  <div class="panel fade" style="animation-delay:.30s">
+    <div class="phead"><div class="ptitle">地方政府债务余额</div><div class="ptag">余额 · 亿元 ／ 同比 · %</div></div>
+    <div id="c_bal" class="chart"></div>
+  </div>
+  <div class="panel fade" style="animation-delay:.36s">
+    <div class="phead"><div class="ptitle">新增专项债发行进度</div><div class="ptag">累计发行 · 万亿元</div></div>
+    <div id="c_sp_progress" class="chart"></div>
+    <div class="pnote">比较2022年以来新增专项债的年内累计发行节奏。发行口径与年度额度口径不一定严格一一对应，完成率主要用于比较发行节奏。</div>
+  </div>
+</div>
+
+<div class="method">
+  <h2>计算方法与数据说明</h2>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="label">EXCEL AS SINGLE SOURCE OF TRUTH</div>
+      <div class="body">网页默认读取与 HTML 位于同一目录下的 <span class="code">fiscal data.xlsx</span>。财政指标的核心计算均在 Excel 的 01—10 结果 Sheet 中完成；覆盖同名 Excel 后刷新页面，摘要卡、图表和数据截止日期会同步更新。</div>
+    </div>
+    <div class="method-card">
+      <div class="label">HTML = READ + PRESENT</div>
+      <div class="body">HTML 不再内嵌固定财政业务数据，也不从 Wind 原始 Sheet 重复计算复杂口径。网页只做日期格式转换、最新一期识别、同比差等轻量展示处理与 ECharts 绘图。</div>
+    </div>
+  </div>
+  <h3>一、口径定义</h3>
+  <div id="defs"></div>
+  <h3>二、数据说明</h3>
+  <div id="notes"></div>
+</div>
+</div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 JX</span>
+    <a href="disclaimer.html">Disclaimer</a>
+  </div>
+</footer>
+<script src="js/config.js"></script>
+<script src="js/tab2.js"></script>
+</body>
+</html>
